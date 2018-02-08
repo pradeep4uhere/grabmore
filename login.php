@@ -49,7 +49,9 @@ if(isset($_SESSION['userData']['userType'])){
       </footer>
         <!--footer section end-->
   </section>
-  
+<script type="text/javascript">
+  var ipaddress="<?php echo $_SERVER['REMOTE_ADDR']?>";
+</script>  
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>
 <script src="js/angular/sweetalert.js"></script>

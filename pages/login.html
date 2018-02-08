@@ -19,19 +19,21 @@
               </div>
               </div>
 
-              <div class="row">
-              <div class="log-input">
-              <div class="col-sm-12">
-                <label><b>User Type</b>&nbsp;&nbsp;&nbsp;</label>
-                <div class="radio-inline"><label><input type="radio" name="usertype" value="3" ng-model="user.userType" checked="checked"> Retail</label></div>
-                <div class="radio-inline"><label><input type="radio" name="usertype" value="1" ng-model="user.userType"> Vendor</label></div>
-                <div class="radio-inline"><label><input type="radio" name="usertype" value="2" ng-model="user.userType"> Supllier</label></div>
-              </div>
-              </div>
-              </div>
               <div class="log-input">
                 <div class="log-input-left">
-                   <input type="text" class="user" value="Yourname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address:';}" ng-model="user.email_address" placeholder="Email Address" />
+                   <select class="form-control" ng-model="user.userType">
+                    <option value="">Select User Type</option>
+                    <option value="2">User</option>
+                    <option value="1">Vendor</option>
+                </select>
+                </div>
+                <div class="clearfix"> </div></br>
+              </div>
+
+
+              <div class="log-input">
+                <div class="log-input-left">
+                   <input type="text" class="user" value="Yourname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address:';}" ng-model="user.email_address" placeholder="Mobile" />
                 </div>
                 <div class="clearfix"> </div>
               </div>

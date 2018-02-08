@@ -43,20 +43,11 @@ app.controller('LoginController', function($scope,$http,LOGIN_URL) {
  
   $('#loginBtn').click(function(){
       if($scope.user.userType==undefined){
-        $scope.class='danger';
-        $scope.message='Login is Successfully';
-        swal({
-            title: "Invalid User Type?",
-            text: "Please Choose valid user type.",
-            type: "error",
-            showCancelButton: false,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "Ok!",
-            closeOnConfirm: true
-          },
-          function(){
-            //swal("Ok!", "Your imaginary file has been deleted.", "success");
-          });
+        $scope.title='Invalid User Type !';
+        $scope.text='Please Choose valid user type.';
+        $scope.type='error';
+        $scope.messageAlert();
+        return false;
       }else{
         loginUser();  
       }
@@ -84,8 +75,8 @@ app.controller('LoginController', function($scope,$http,LOGIN_URL) {
      console.log($scope.user.email_address);
      
      if($scope.user.email_address==undefined){
-        $scope.title='Invalid Email Address';
-        $scope.text='Please enter valid email address.';
+        $scope.title='Invalid username !';
+        $scope.text='Please enter valid email or mobile.';
         $scope.type='error';
         $scope.messageAlert();
         return false;
@@ -99,11 +90,36 @@ app.controller('LoginController', function($scope,$http,LOGIN_URL) {
      }
 
      if($scope.user.email_address!=undefined && $scope.user.password!=undefined){
-       $http.post(LOGIN_URL,
-       {
-         data: {user: $scope.user}
-        
-        })
+       //Formate Valid Post Method for Login
+       /*
+               {  
+           "data":{  
+              "user":{  
+                 "mobile":"9015446567",
+                 "emaladdress":"pradeep7384@gmail.com",
+                 "password":"123456",
+                 "userType":1
+              },
+              "from":"mobile",
+              "checksum":"5a828ca5302b19ae8c7a66149f3e1e98",
+              "ipaddress":"127.0.0.7"
+           }
+        }*/
+       $scope.postLoginData={
+                              "user":{  
+                                       "mobile":$scope.user.email_address,
+                                       "emaladdress":$scope.user.email_address,
+                                       "password":$scope.user.password,
+                                       "userType":$scope.user.userType
+                                    },
+                                    "from":"web",
+                                    "checksum":"",
+                                    "ipaddress":ipaddress
+                           }; 
+
+         $http.post(LOGIN_URL,{
+           data: $scope.postLoginData
+         })
         .success(function(data,status){
           var responseData=JSON.stringify(data);
           if(data.status=='success'){
