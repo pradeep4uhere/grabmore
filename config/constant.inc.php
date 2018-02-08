@@ -1,6 +1,7 @@
 <?php session_start(); 
+DEFINE('DIRNAME','grabmore');
 if($_SERVER['HTTP_HOST']=='localhost'){
-	define('SERVER_URL','http://localhost/prs/');
+	define('SERVER_URL','http://localhost/'.DIRNAME.'/');
 }else{
 	error_reporting(0);
 	define('SERVER_URL','https://prssystem.000webhostapp.com/');

@@ -1,6 +1,6 @@
 <?php require_once('config/config.inc.php'); 
 if(!isset($_SESSION['login_mode'])){
-  header('location:webmaster.php');
+  header('location:login.php');
 }
 
 // echo "<pre>";

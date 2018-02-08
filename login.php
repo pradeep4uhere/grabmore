@@ -1,6 +1,6 @@
 <?php require('config/config.inc.php');
 if(isset($_SESSION['userData']['userType'])){
-  header('location:dashboard.php');
+    //header('location:profile.php');
 }
 ?>
 <!DOCTYPE HTML>
@@ -17,6 +17,8 @@ if(isset($_SESSION['userData']['userType'])){
 <!-- Graph CSS -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
+<!--Sweet Alert CSs-->
+<link href="css/sweetalert.css" rel="stylesheet"> 
 <!-- lined-icons -->
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
@@ -34,7 +36,10 @@ if(isset($_SESSION['userData']['userType'])){
 <!-- Placed js at the end of the document so the pages load faster -->
 
 </head> 
-   
+ <style type="text/css">
+   .sweet-alert h2{ font-size: 14px; }
+   .sweet-alert p{ font-size: 13px; }
+ </style>  
  <body class="sign-in-up" ng-app="psrLoginApp">
     <section>
       <div ng-view></div>
@@ -47,6 +52,7 @@ if(isset($_SESSION['userData']['userType'])){
   
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>
+<script src="js/angular/sweetalert.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/angular/angular.min.js"></script>
