@@ -1,0 +1,1304 @@
+https://pradeepkumar15.proto.io/editor/index.cfm?id=9c4e7787-aa70-47bf-ad73-55b69a366652
+==============================================================================================
+*********************************Add New Vendor**********************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=addnewvendor
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=addnewvendor
+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+Post Data
+-----------------------------------------------------------------------------------------------
+{  
+   "data":{  
+      "user":{  
+         "Fname":"",
+         "lname":"dsad",
+         "compname":"dsad",
+         "address":"dsad",
+         "locality":"sector 63 Noida",
+         "pincode":"dsa",
+         "emailaddress":"dasd@gmal.com",
+         "password":"123456"
+      },
+      "from":"mobile",
+      "checksum":"5a828ca5302b19ae8c7a66149f3e1e98",
+      "ipaddress":"127.0.0.7"
+   }
+}
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+Result:-
+ {
+  "status": "success",
+  "user": {
+    "status": "success",
+    "last_id": 26
+  }
+}
+-----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+On Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=addnewvendor&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"fname":"Pradeep","lname":"Kumar","compname":"New Vendor Company","address":"E-57 Noida Sector 63","pincode":"201301","mobile":"9015446567","emailaddress":"pradeep7384@gmail.com","password":"123456","cpassword":"123456"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+-----------------------------------------------------------------------------------------------
+On Server By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=addnewvendor&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"fname":"Pradeep","lname":"Kumar","compname":"New Vendor Company","address":"E-57 Noida Sector 63","pincode":"201301","mobile":"9015446567","emailaddress":"pradeep7384@gmail.com","password":"123456","cpassword":"123456"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+===============================================================================================
+
+
+
+
+==============================================================================================
+*********************************Vendor Login*************************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=login-
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+Post Data
+-----------------------------------------------------------------------------------------------
+{  
+   "data":{  
+      "user":{  
+         "mobile":"9015446567",
+         "emaladdress":"pradeep7384@gmail.com",
+         "password":"123456",
+	 "userType":1
+      },
+      "from":"mobile",
+      "checksum":"5a828ca5302b19ae8c7a66149f3e1e98",
+      "ipaddress":"127.0.0.7"
+   }
+}
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+Result:- 
+{
+   "status":"success",
+   "user":{
+      "status":"success",
+      "data":{
+         "PKCompanyRefNo":"1",
+         "fname":"Pradeep",
+         "lname":"Kumar",
+         "companyRefNo":null,
+         "companyName":"New Vendor Company",
+         "comapnyAdress":"E-57 Noida Sector 63",
+         "locality":"E-57 Noida Sector 63",
+         "companyServiceProvider":null,
+         "country":null,
+         "city":null,
+         "state":null,
+         "pincode":"201301",
+         "mobile":"9015446567",
+         "pin":null,
+         "pasword":"e10adc3949ba59abbe56e057f20f883e",
+         "panCardNum":null,
+         "tinNo":null,
+         "companyEmailIds":"pradeep7384@gmail.com",
+         "photo":null,
+         "idProof":null,
+         "compIsActive":"0",
+         "compCreateDate":null,
+         "compModifiedDate":null
+      }
+   }
+}
+-----------------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------
+Server Curl-
+-----------------------------------------------------------------------------------------------
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=login&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"mobile":"9015446567","emailaddress":"pradeep7384@gmail.com","password":"123456","userType":1},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=login&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"mobile":"","emailaddress":"pradeep7384@gmail.com","password":"123456","userType":1},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+===============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Get Master Data Measurement Unit ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getlist
+?type=unit&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+-----------------------------------------------------------------------------------------------
+Result:- 
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "18",
+      "title": "Acre",
+      "description": "Acre",
+      "parent_id": "1",
+      "status": "1",
+      "created_date": null,
+      "created_by": null,
+      "modified_date": "2018-01-22 15:26:20"
+    },
+    {
+      "id": "2",
+      "title": "Area",
+      "description": "Area",
+      "parent_id": "0",
+      "status": "1",
+      "created_date": null,
+      "created_by": null,
+      "modified_date": "2018-01-22 15:07:50"
+    }
+  ]
+}
+-----------------------------------------------------------------------------------------------
+
+===============================================================================================
+
+
+
+
+==============================================================================================
+*************************Get Master Data Service category List ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getlist
+?type=servicecategory&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+-----------------------------------------------------------------------------------------------
+Result:- 
+
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "2",
+      "title": "Vechile Part",
+      "code": "BAKE2018",
+      "short_name": "Vechile Part",
+      "description": "WATERBOLLTE2018",
+      "status": "1",
+      "created_date": "2018-01-22 00:00:00",
+      "created_by": "1",
+      "modified_date": "2018-01-22 15:47:13"
+    },
+    {
+      "id": "1",
+      "title": "Water Bottel",
+      "code": "WATERBOLLTE2018",
+      "short_name": "Water Bottel",
+      "description": "WATERBOLLTE2018",
+      "status": "1",
+      "created_date": "2018-01-22 00:00:00",
+      "created_by": "1",
+      "modified_date": "2018-01-22 15:45:59"
+    }
+  ]
+}
+
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+==============================================================================================
+*************************Get Vendor Profile Details ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getvendorprofile&id=1&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+
+http://prssystem.000webhostapp.com/API/internalapi.php?action=getvendorprofile&id=1&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+-----------------------------------------------------------------------------------------------
+Result:- 
+
+{
+  "status": "success",
+  "data": {
+    "PKCompanyRefNo": "1",
+    "fname": "Pradeep",
+    "lname": "Kumar",
+    "companyRefNo": null,
+    "companyName": "New Vendor Company",
+    "comapnyAdress": "E-57 Noida Sector 63",
+    "locality":"E-57 Noida Sector 63",
+    "companyServiceProvider": null,
+    "country": null,
+    "city": null,
+    "state": null,
+    "pincode": "201301",
+    "mobile": "9015446567",
+    "pin": null,
+    "pasword": "e10adc3949ba59abbe56e057f20f883e",
+    "panCardNum": null,
+    "tinNo": null,
+    "companyEmailIds": "pradeep7384@gmail.com",
+    "photo": null,
+    "idProof": null,
+    "compIsActive": "0",
+    "compCreateDate": null,
+    "compModifiedDate": null
+  }
+}-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Vendor Add / Edit Product as His/Her Inventery******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=addproduct
+-----------------------------------------------------------------------------------------------
+Add New Product- Post Data
+
+{
+  "data": {
+    "user": {
+      "catID": "3",
+      "unitID": "9",
+      "title": "ABC product",
+      "description": "this is new description of theproducte gies here only",
+      "vendorId": "1",
+      "sku": "AKQ2018",
+      "capacity": "20",
+      "price": "30.00",
+      "status": "1",
+      "image": "",
+      "created_date": "23-01-2018",
+      "created_by": "1"
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+
+For Edit Prodduct Data "id":10 should be sent into json
+
+{
+  "data": {
+    "user": {
+      "id": "10",
+      "catID": "3",
+      "unitID": "9",
+      "title": "ABC product",
+      "description": "this is new description of theproducte gies here only",
+      "vendorId": "1",
+      "sku": "AKQ2018",
+      "capacity": "20",
+      "price": "30.00",
+      "status": "1",
+      "image": "",
+      "created_date": "23-01-2018",
+      "created_by": "1"
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+**Mendetary Field:**
+"catID": "3",
+"unitID": "9",
+"title": "ABC product",
+"description": "this is new description of theproducte gies here only",
+"vendorId": "1",
+"sku": "AKQ2018",
+"capacity": "20",
+"price": "30.00",
+
+**Rest are Optionals
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=addproduct&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"catID":"3","unitID":"9","title":"ABC product","description":"this is new description of theproducte gies here only","vendorId":"1","sku":"AKQ2018","capacity":"20","price":"30.00","status":"1","image":"","created_date":"23-01-2018","created_by":"1"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=addproduct&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"catID":"3","unitID":"9","title":"ABC product","description":"this is new description of theproducte gies here only","vendorId":"1","sku":"AKQ2018","capacity":"20","price":"30.00","status":"1","image":"","created_date":"23-01-2018","created_by":"1"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "last_id": 30
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+==============================================================================================
+*************************Get All Vendor Product List ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getvendorproductlist&type=products&vendor_id=1&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1&start=0&offset=1
+
+
+Live URL:-
+http://prssystem.000webhostapp.com/API/internalapi.php?action=getvendorproductlist&type=products&vendor_id=1&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1&start=0&offset=1
+
+
+
+-----------------------------------------------------------------------------------------------
+Result:- 
+
+{
+  "status": "success",
+  "data": {
+    "start": "0",
+    "offset": "2",
+    "data": [
+      {
+        "id": "10",
+        "category_id": "3",
+        "unit_id": "9",
+        "PKCompanyRefNo": "1",
+        "title": "ABC product",
+        "description": "this is new description of theproducte gies here only",
+        "product_sku": "AKQ2019",
+        "barcode": "AKU2018",
+        "qrcode": "AKU2018",
+        "image": "",
+        "capacity": "20",
+        "price": "30.00",
+        "status": "1",
+        "created_date": "2018-01-10 00:00:00",
+        "created_by": "1",
+        "modified_date": "2018-01-23 10:03:09"
+      },
+      {
+        "id": "11",
+        "category_id": "3",
+        "unit_id": "9",
+        "PKCompanyRefNo": "1",
+        "title": "ABC product",
+        "description": "this is new description of theproducte gies here only",
+        "product_sku": "AKQ2018",
+        "barcode": null,
+        "qrcode": null,
+        "image": null,
+        "capacity": "20",
+        "price": "30.00",
+        "status": "1",
+        "created_date": "2018-01-23 00:00:00",
+        "created_by": "1",
+        "modified_date": "2018-01-23 14:08:11"
+      }
+    ]
+  }
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Product Details By ID******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getproduct&vendor_id=1&prod_id=10&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+http://prssystem.000webhostapp.com/API/internalapi.php?action=getproduct&vendor_id=1&prod_id=10&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+
+-----------------------------------------------------------------------------------------------
+**Mendetary Field:**
+"prod_id": "3",
+"vendor_id": "9",
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "10",
+      "category_id": "3",
+      "unit_id": "9",
+      "PKCompanyRefNo": "1",
+      "title": "ABC product",
+      "description": "this is new description of theproducte gies here only",
+      "product_sku": "AKQ2019",
+      "barcode": "AKU2018",
+      "qrcode": "AKU2018",
+      "image": "",
+      "capacity": "20",
+      "price": "30.00",
+      "status": "1",
+      "created_date": "2018-01-10 00:00:00",
+      "created_by": "1",
+      "modified_date": "2018-01-23 10:03:09"
+    }
+  ]
+}
+
+
+On Empty-
+{
+  "status": "failed",
+  "data": "null"
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Vendor Change Password******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=updatevendorprofile
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=updatevendorprofile
+-----------------------------------------------------------------------------------------------
+
+For update password
+
+{
+  "data": {
+    "user": {
+      "type":"pass",
+      "PKCompanyRefNo": "10",
+      "oldpassword": "123456",
+      "password": "123456789",
+      "cpassword": "123456789",
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+**Mendetary Field:**
+"oldpassword": "123456",
+"password": "1234561",
+"cpassword": "1234561"
+
+**Rest are Optionals
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=updatevendorprofile&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"pass","PKCompanyRefNo":"1","oldpassword":"123456","password":"21212121","cpassword":"21212121"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=updatevendorprofile&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"pass","PKCompanyRefNo":"1","oldpassword":"123456","password":"21212121","cpassword":"21212121"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "message": "Password Updated successfully"
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+==============================================================================================
+*******************************Vendor Profile Update*****************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=updatevendorprofile
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=updatevendorprofile
+-----------------------------------------------------------------------------------------------
+For update profile
+
+{
+  "data": {
+    "user": {
+      "type":"profile",
+      "PKCompanyRefNo": "1",
+      "firstName": "pradeep",
+      "lastName": "kumar",
+      "companyName": "ABC Company",
+      "comapnyAdress": "comapnyAdress",
+      "locality":"E-57 Noida Sector 63",
+      "mobile": "mobile",
+      "pincode":"110043",
+      "panCard":"BDWPK1545A",
+      "tinNo":"BDWPK1545A8787878"
+      "emailAddress":"pradeep3300@gmail.com"
+
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+**Optional Fileds
+-----------------------------------------
+"firstName": "pradeep",
+"lastName": "kumar",
+"companyName": "ABC Company",
+"comapnyAdress": "comapnyAdress",
+"pincode": "pincode",
+"mobile": "mobile",
+"pincode":"110043",
+"panCard":"BDWPK1545A",
+"tinNo":"BDWPK1545A8787878"
+"emailAddress":"pradeep3300@gmail.com"
+"locality":"E-57 Noida Sector 63",
+-----------------------------------------
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=updateveUser-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"profile","PKCompanyRefNo":"10","firstName":"pradeep","lastName":"kumar","companyName":"test","comapnyAdress":"noida","pincode":"201301","mobile":"9015446567","panCard":"BDWPK1545A","emailAddress":"pradeep3300@gmail.com"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+-----------------------------------------------------------------------------------------------
+Server By Curl-
+-----------------------------------------------------------------------------------------------
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=updatevendorprofile&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"profile","PKCompanyRefNo":"10","firstName":"pradeep","lastName":"kumar","companyName":"test","comapnyAdress":"noida","pincode":"201301","mobile":"9015446567","panCard":"BDWPK1545A","emailAddress":"pradeep3300@gmail.com"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+Result If Failed:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "message": "profile Updated successfully"
+}
+-----------------------------------------------------------------------------------------------
+
+
+
+Result If Failed:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "failed",
+  "message": "Invalid vendor Id, try after sometime."
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Get Master Data State ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getlist
+&type=states&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+-----------------------------------------------------------------------------------------------
+Result:- 
+[
+  {
+    "id": "1",
+    "name": "Andaman and Nicobar Islands",
+    "country_id": "101",
+    "status": "1"
+  },
+  {
+    "id": "2",
+    "name": "Andhra Pradesh",
+    "country_id": "101",
+    "status": "1"
+  }
+ ]
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+==============================================================================================
+*************************Get City List Based On State ID ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getcitylist
+&type=cities&state_id=5&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+Live::
+http://prssystem.000webhostapp.com/API/internalapi.php?action=getcitylist&type=cities&state_id=5&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+
+-----------------------------------------------------------------------------------------------
+Result:- 
+[
+  {
+    "id": "448",
+    "name": "Amarpur",
+    "state_id": "5",
+    "country_id": "101",
+    "status": "1"
+  },
+  {
+    "id": "449",
+    "name": "Ara",
+    "state_id": "5",
+    "country_id": "101",
+    "status": "1"
+  },
+  {
+    "id": "450",
+    "name": "Araria",
+    "state_id": "5",
+    "country_id": "101",
+    "status": "1"
+  },
+  {
+    "id": "451",
+    "name": "Areraj",
+    "state_id": "5",
+    "country_id": "101",
+    "status": "1"
+  },
+  {
+    "id": "452",
+    "name": "Asarganj",
+    "state_id": "5",
+    "country_id": "101",
+    "status": "1"
+  }
+ ]
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+==============================================================================================
+*********************************Add New Supplier Of Vendor***********************************
+----------------------------------------------------------------------------------------------
+Local URL-http://localhost/prs/API/internalapi.php?action=addsupplier
+Server URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=addsupplier
+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+Post Data
+-----------------------------------------------------------------------------------------------
+{  
+   "data":{  
+      "user":{  
+         "PKCompanyRefNo":"2",
+         "first_name":"spplier",
+         "last_name":"vendor",
+         "email_address":"mobile@gmail.com",
+         "mobile":"7845214578",
+         "pincode":"201301",
+         "address":"Noida Secor 65",
+         "locality":"Noida Secor 65"
+      },
+      "from":"mobile",
+      "checksum":"5a828ca5302b19ae8c7a66149f3e1e98",
+      "ipaddress":"127.0.0.7"
+   }
+}
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+Result:-
+ {
+  "status": "success",
+  "last_id": 13,
+  "message": "Supllier added successfully."
+}
+-----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+On Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=addsupplier&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"PKCompanyRefNo":"2","first_name":"spplier","last_name":"vendor","email_address":"mobile@gmail.com","mobile":"7845214578","pincode":"201301","address":"Noida Secor 65","locality":"Noida Secor 65"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+-----------------------------------------------------------------------------------------------
+On Server By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=addsupplier&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"PKCompanyRefNo":"2","first_name":"spplier","last_name":"vendor","email_address":"mobile@gmail.com","mobile":"7845214578","pincode":"201301","address":"Noida Secor 65","locality":"Noida Secor 65"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+===============================================================================================
+
+
+
+
+
+==============================================================================================
+*************************Get Supplier Data Of Vendor ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=supplierdetails
+&id=2&vendor_id=2&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+Live::
+http://prssystem.000webhostapp.com/API/internalapi.php?action=supplierdetails
+&id=33&vendor_id=1&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+
+-----------------------------------------------------------------------------------------------
+Result:- 
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "33",
+      "PKCompanyRefNo": "1",
+      "first_name": "spplier",
+      "last_name": "vendor",
+      "email_address": "mobile@gmail.com",
+      "password": "611566e34ec4f8bfd473ab6cb42a420e",
+      "mobile": "7845214578",
+      "address": "Noida Secor 65",
+      "pincode": "201301",
+      "landmark": "Noida Secor 65",
+      "PAN": "",
+      "status": "1",
+      "created_on": "2018-01-25 09:39:20",
+      "modified_on": "0000-00-00 00:00:00"
+    }
+  ]
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+==============================================================================================
+*************************Get All Supplier List Of Vendor ************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=allsupplier
+&vendor_id=2&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+Live::
+http://prssystem.000webhostapp.com/API/internalapi.php?action=allsupplier
+&vendor_id=2&from=mobile&checksum=5a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.1
+
+
+-----------------------------------------------------------------------------------------------
+Result:- 
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "33",
+      "PKCompanyRefNo": "1",
+      "first_name": "spplier",
+      "last_name": "vendor",
+      "email_address": "mobile@gmail.com",
+      "password": "611566e34ec4f8bfd473ab6cb42a420e",
+      "mobile": "7845214578",
+      "address": "Noida Secor 65",
+      "pincode": "201301",
+      "landmark": "Noida Secor 65",
+      "PAN": "",
+      "status": "1",
+      "created_on": "2018-01-25 09:39:20",
+      "modified_on": "0000-00-00 00:00:00"
+    }
+  ]
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+==============================================================================================
+******************************supplier Profile Update*****************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=updatesupplierprofile
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=updatesupplierprofile
+-----------------------------------------------------------------------------------------------
+For update profile
+
+{
+  "data": {
+    "user": {
+      "type":"profile",
+      "id": "1",
+      "PKCompanyRefNo": "1",
+      "firstName": "pradeep",
+      "lastName": "kumar",
+      "address": "comapnyAdress",
+      "landmark":"E-57 Noida Sector 63",
+      "mobile": "mobile",
+      "pincode":"110043",
+      "emailAddress":"pradeep3300@gmail.com"
+
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+**Optional Fileds
+-----------------------------------------
+"firstName": "pradeep",
+"lastName": "kumar",
+"address": "ABC Company",
+"landmark": "comapnyAdress",
+"pincode": "pincode",
+"mobile": "mobile",
+"emailAddress":"pradeep3300@gmail.com"
+"locality":"E-57 Noida Sector 63",
+-----------------------------------------
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=updatesupplierprofile&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"profile","PKCompanyRefNo":"1","firstName":"rajesh","lastName":"kumar","address":"address here","landmark":"lamndmark","mobile":"9015446568","pincode":"110043","emailAddress":"pradeep3@gmail.com","id":"2"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+-----------------------------------------------------------------------------------------------
+Server By Curl-
+-----------------------------------------------------------------------------------------------
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=updatesupplierprofile&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"profile","PKCompanyRefNo":"1","firstName":"rajesh","lastName":"kumar","address":"address here","landmark":"lamndmark","mobile":"9015446568","pincode":"110043","emailAddress":"pradeep3@gmail.com","id":"2"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+Result If Failed:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "message": "profile Updated successfully"
+}
+-----------------------------------------------------------------------------------------------
+
+
+
+Result If Failed:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "failed",
+  "message": "Invalid vendor Id, try after sometime."
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Supplier Change Password******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=updatesupplierprofile
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=updatesupplierprofile
+-----------------------------------------------------------------------------------------------
+
+For update password
+
+{
+  "data": {
+    "user": {
+      "type":"pass",
+      "id": "10",
+      "oldpassword": "123456",
+      "password": "123456789",
+      "cpassword": "123456789",
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+**Mendetary Field:**
+"oldpassword": "123456",
+"password": "1234561",
+"cpassword": "1234561"
+
+**Rest are Optionals
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=updatesupplierprofile&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"pass","id":"1","oldpassword":"123456","password":"21212121","cpassword":"21212121"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=updatesupplierprofile&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"type":"pass","id":"1","oldpassword":"123456","password":"21212121","cpassword":"21212121"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "message": "Password Updated successfully"
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+==============================================================================================
+*************************Order******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=createorder
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=createorder
+-----------------------------------------------------------------------------------------------
+
+For Order Data
+
+{
+  "data": {
+    "user": {
+      "vendor_id": "27",
+      "supplier_id": "2",
+      "order_by": "27",
+      "product_id": "10",
+      "quantity": "10",
+      "price": "20",
+      "discount": "0",
+      "discount_id": "0",
+      "discount_price": "0",
+      "total_price": "200",
+      "created_date": "",
+      "order_status": "Ordered",
+      "payment_status": "Dues"
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+**Mendetary Field:**
+"vendor_id": "2",
+"supplier_id": "1",
+"order_by": "1",
+"product_id": "10",
+"quantity": "10",
+"price": "20",
+"total_price": "200",
+
+**Rest are Optionals
+"discount": "0",
+"discount_id": "0",
+"discount_price": "0",
+
+**Order Form Vendor
+order_by=1
+
+**Order Form Supplier
+order_by=2
+
+**Order Form Client
+order_by=3
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=createorder&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"vendor_id":"2","supplier_id":"1","order_by":"1","product_id":"10","quantity":"10","price":"20","discount":"0","discount_id":"0","discount_price":"0","total_price":"200","created_date":"","order_status":"Ordered","payment_status":"Dues","total_price":"200"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=createorder&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"vendor_id":"27","supplier_id":"2","order_by":"1","product_id":"10","quantity":"10","price":"20","discount":"0","discount_id":"0","discount_price":"0","total_price":"200","created_date":"","order_status":"Ordered","payment_status":"Dues","total_price":"200"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "orderid": "PRS2018013051",
+  "message": "Order placed successfully."
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Get All Order List******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=getorderlist
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=getorderlist
+-----------------------------------------------------------------------------------------------
+
+For Order Data
+Request Prameters
+http://localhost/prs/API/internalapi.php?action=getorderlist&vendor_id=1&supplier_id=&user_id=&date=20180130&product_id=&order_status=&payment_status=&orderid=&category_id=&from=mobile&checksum=%205a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.7&start=0&offset=2
+
+http://prssystem.000webhostapp.com/API/internalapi.php?action=getorderlist&vendor_id=&supplier_id=&user_id=&date=&product_id=&order_status=&payment_status=&orderid=&category_id=&from=mobile&checksum=%205a828ca5302b19ae8c7a66149f3e1e98&ipaddress=127.0.0.7&start=0&offset=0
+
+
+
+**Optionals
+order_status:'Ordered/InProcess/Delivered/Cancelled'
+payment_status:'Dues/Done'
+date:20180125 (Ymd) formate
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "data": {
+    "0": {
+      "vendorName": "test",
+      "productName": "ABC product",
+      "description": "this is new description of theproducte gies here only",
+      "productSku": "AKQ2019",
+      "productPrice": "30.00",
+      "categoryTitle": "Water Bottel",
+      "id": "51",
+      "orderid": "PRS2018013051",
+      "vendor_id": "1",
+      "supplier_id": "1",
+      "user_id": null,
+      "order_by": "1",
+      "product_id": "10",
+      "quantity": "10.00",
+      "price": "20.00",
+      "discount": "0.00",
+      "discount_type_id": "0",
+      "discount_price": "0.00",
+      "total_price": "200.00",
+      "created_date": "2018-01-30 00:00:00",
+      "order_status": "Ordered",
+      "payment_status": "Dues",
+      "modified_date": "2018-01-30 13:43:57",
+      "discountType": null
+    },
+    "1": {
+      "vendorName": "test",
+      "productName": "ABC product",
+      "description": "this is new description of theproducte gies here only",
+      "productSku": "AKQ2019",
+      "productPrice": "30.00",
+      "categoryTitle": "Water Bottel",
+      "id": "50",
+      "orderid": "PRS2018013050",
+      "vendor_id": "1",
+      "supplier_id": "1",
+      "user_id": null,
+      "order_by": "1",
+      "product_id": "10",
+      "quantity": "10.00",
+      "price": "20.00",
+      "discount": "0.00",
+      "discount_type_id": "0",
+      "discount_price": "0.00",
+      "total_price": "200.00",
+      "created_date": "2018-01-30 00:00:00",
+      "order_status": "Ordered",
+      "payment_status": "Dues",
+      "modified_date": "2018-01-30 13:41:39",
+      "discountType": null
+    },
+    "total": 22,
+    "start": "0",
+    "offset": "2"
+  }
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+==============================================================================================
+*********************************Update Order Table**************************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=updateorder
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=updateorder
+-----------------------------------------------------------------------------------------------
+
+For Order Data
+
+{
+  "data": {
+    "user": {
+      "id":"32",
+      "orderid": "PRS2018013032",
+      "order_status": "Ordered",
+      "payment_status": "Dues"
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+**Mendetary Field:**
+"orderid": "200",
+
+order_status:'Ordered/InProcess/Delivered/Cancelled'
+payment_status:'Dues/Done'
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=updateorder&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"id":"32","orderid":"PRS2018013032","order_status":"Ordered","payment_status":"Dues"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=updateorder&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"id":"32","orderid":"PRS2018013032","order_status":"Ordered","payment_status":"Dues"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "orderid": "PRS2018013051",
+  "message": "Order placed successfully."
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+==============================================================================================
+*************************Payment For Order******************************
+-----------------------------------------------------------------------------------------------
+URL-http://localhost/prs/API/internalapi.php?action=orderpayment
+URL-http://prssystem.000webhostapp.com/API/internalapi.php?action=orderpayment
+-----------------------------------------------------------------------------------------------
+
+For Order Data
+
+{
+  "data": {
+    "user": {
+      "order_id": "32",
+      "user_id": "10",
+      "payment_by": "3",
+      "total_amount": "100",
+      "amount": "50",
+      "payment_mode": "Cash",
+      "payment_status": "Paid",
+      "payment_date": "2018-01-31",
+      "txn_no": "0"
+    },
+    "from": "mobile",
+    "checksum": "5a828ca5302b19ae8c7a66149f3e1e98",
+    "ipaddress": "127.0.0.7"
+  }
+}
+
+
+
+-----------------------------------------------------------------------------------------------
+Local By Curl-
+-----------------------------------------------------------------------------------------------
+
+curl 'http://localhost/prs/API/internalapi.php?action=orderpayment&t=0.9829853613965939' -H 'Host: localhost' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://localhost/prs/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=3fc8b1214ee9a638c03560a8fee43afe' -H 'Connection: keep-alive' --data '{"data":{"user":{"order_id":"32","user_id":"10","payment_by":"3","total_amount":"100","amount":"50","payment_mode":"Cash","payment_status":"Paid","payment_date":"2018-01-31","txn_no":"0"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+
+
+
+curl 'http://prssystem.000webhostapp.com/API/internalapi.php?action=orderpayment&t=0.00021750031163370043' -H 'Host: prssystem.000webhostapp.com' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://prssystem.000webhostapp.com/register.html' -H 'Content-Type: application/json;charset=utf-8' -H 'Cookie: PHPSESSID=ffinlccrkbufurfdif6hbet3p5' -H 'Connection: keep-alive' --data '{"data":{"user":{"order_id":"32","user_id":"10","payment_by":"3","total_amount":"100","amount":"50","payment_mode":"Cash","payment_status":"Paid","payment_date":"2018-01-31","txn_no":"0"},"from":"mobile","checksum":"5a828ca5302b19ae8c7a66149f3e1e98","ipaddress":"127.0.0.7"}}'
+
+
+Result:- 
+-----------------------------------------------------------------------------------------------
+{
+  "status": "success",
+  "orderid": "PRS2018013051",
+  "message": "Order placed successfully."
+}
+-----------------------------------------------------------------------------------------------
+===============================================================================================
+
+
+
+
+
+
+
+
+
