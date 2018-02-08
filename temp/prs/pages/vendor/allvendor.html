@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+  <div class="graphs">
+    <h3 class="blank1">Basic Tables</h3>
+     
+      <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+        <div class="panel-heading">
+          <h2>All List</h2>
+          <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+        </div>
+        <div class="panel-body no-padding" style="display: block;">
+          <table class="table table-striped">
+            <thead>
+              <tr class="success">
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in itemlist">
+                <td>{{item.id}}</td>
+                <td>{{item.fname}}</td>
+                <td>{{item.lname}}</td>
+                <td>{{item.email_address}}</td>
+                <td>{{item.phone_number}}</td>
+                <td><div class="btn-group m-r-sm mail-hidden-options" style="display: inline-block;">
+                        
+                        <div class="btn-group">
+                          <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tags"></i> <span class="caret"></span></a>
+                          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li><a href="#/viewprofile/:id={{item.id}}">Profile</a></li>
+                            <li><a href="#/status/id={{item.id}}">Active</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#/editvendor/{{item.id}}/{{item.fname}}">Edit Profile</a></li>
+                          </ul>
+                        </div>
+                      </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      
+      </div>
+    </div>
+  </div>
+</div>
