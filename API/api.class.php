@@ -34,7 +34,7 @@ class apiService{
 
   function logout(){
     session_destroy();
-    header('location:webmaster.php');
+    header('location:login.php');
   }
 
 
@@ -160,7 +160,7 @@ class apiService{
               //$ress=mysqli_affected_rows();
               }else{
                 if(array_key_exists('pasword',$postdata)){
-                	$query="INSERT INTO ".PREFIX.VENDOR." (`fname`,`lname`,`companyName` ,`comapnyAdress` ,`pincode` ,`mobile` ,`companyEmailIds`,`pasword`)VALUES ('".$postdata['fname']."','".$postdata['lname']."','".$postdata['companyName']."', '".$postdata['comapnyAdress']."','".$postdata['pincode']."','".$postdata['mobile']."','".$postdata['companyEmailIds']."','".md5($postdata['pasword'])."')";
+                 	$query="INSERT INTO ".PREFIX.VENDOR." (`fname`,`lname`,`companyName` ,`comapnyAdress` ,`pincode` ,`mobile` ,`companyEmailIds`,`pasword`)VALUES ('".$postdata['fname']."','".$postdata['lname']."','".$postdata['companyName']."', '".$postdata['comapnyAdress']."','".$postdata['pincode']."','".$postdata['mobile']."','".$postdata['companyEmailIds']."','".md5($postdata['pasword'])."')";
                 }else{
                 $query="INSERT INTO ".PREFIX.VENDOR." (`fname`,`lname`,`companyName` ,`comapnyAdress` ,`pincode` ,`mobile` ,`companyEmailIds`)VALUES ('".$postdata['fname']."','".$postdata['lname']."','".$postdata['companyName']."', '".$postdata['comapnyAdress']."','".$postdata['pincode']."','".$postdata['mobile']."','".$postdata['companyEmailIds']."')";
                 }

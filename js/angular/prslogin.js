@@ -107,8 +107,7 @@ app.controller('LoginController', function($scope,$http,LOGIN_URL) {
         }*/
        $scope.postLoginData={
                               "user":{  
-                                       "mobile":$scope.user.email_address,
-                                       "emaladdress":$scope.user.email_address,
+                                       "username":$scope.user.email_address,
                                        "password":$scope.user.password,
                                        "userType":$scope.user.userType
                                     },

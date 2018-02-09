@@ -1,10 +1,7 @@
 <?php require_once('config/config.inc.php'); 
-if(!isset($_SESSION['login_mode'])){
+if(!Auth::isLogin()){
   header('location:login.php');
 }
-
-// echo "<pre>";
-// print_r($_SESSION);die;
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -21,6 +18,9 @@ if(!isset($_SESSION['login_mode'])){
 <!-- Graph CSS -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
+<!--Sweet Alert CSs-->
+<link href="css/sweetalert.css" rel="stylesheet"> 
+
 <!-- lined-icons -->
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
@@ -30,7 +30,7 @@ if(!isset($_SESSION['login_mode'])){
 <!--animate-->
 <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
 <!--Datatable-->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"> -->
 
 <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"> -->
 
@@ -43,19 +43,23 @@ if(!isset($_SESSION['login_mode'])){
  <!-- Meters graphs -->
 <script src="js/jquery-1.10.2.min.js"></script>
 
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<!-- <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script> -->
 <!-- Placed js at the end of the document so the pages load faster -->
 
 </head> 
-
- <body class="sticky-header left-side-collapsed"  onload="initMap()" ng-app="prsApp">
+<style type="text/css">
+   .sweet-alert h2{ font-size: 14px; }
+   .sweet-alert p{ font-size: 13px; }
+ </style>  
+ 
+<body class="sticky-header left-side-collapsed"  ng-app="prsApp">
     <section>
     <!-- left side start-->
     <div class="left-side sticky-left-side">
     <?php //echo "<pre>"; print_r($_SESSION);?>
       <!--logo and iconic logo start-->
       <div class="logo">
-        <h1><a href="index.html"><span><?php echo ucfirst($_SESSION['first_name']);?></span></a></h1>
+        <h1><a href="index.html"><span><?php echo Auth::getFirstName();?></span></a></h1>
       </div>
       <div class="logo-icon text-center">
         <a href="index.html"><i class="lnr lnr-home"></i> </a>
@@ -69,22 +73,20 @@ if(!isset($_SESSION['login_mode'])){
             <li class="active"><a href="index.html"><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a></li>
             <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i> <span>Menu</span></a>  
               <ul class="sub-menu-list">
-                <li><a href="#/vendorlist">All Vendros</a></li>
-                <li><a href="#/addvendor">Add New vendor</a></li>
-
+                <li><a href="#/vendorprofile/<?php echo Auth::getID();?>">My Profile</a></li>
               </ul>
             </li>
             <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i> <span>Product</span></a>  
               <ul class="sub-menu-list">
-                <li><a href="#/allproducts/<?php echo $_SESSION['userData']['PKCompanyRefNo'];?>">All Product</a></li>
-                <li><a href="#/addproduct/<?php echo $_SESSION['userData']['PKCompanyRefNo'];?>">Add New Product</a></li>
+                <li><a href="#/allproducts/<?php echo Auth::getID();?>">All Product</a></li>
+                <li><a href="#/addproduct/<?php echo Auth::getID();?>">Add New Product</a></li>
 
               </ul>
             </li>
             <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i> <span>Supplier</span></a>  
               <ul class="sub-menu-list">
-                <li><a href="#/supplierlist/<?php echo $_SESSION['userData']['PKCompanyRefNo'];?>">All Supplier</a></li>
-                <li><a href="#/addsupplier/<?php echo $_SESSION['userData']['PKCompanyRefNo'];?>">Add New Supplier</a></li>
+                <li><a href="#/supplierlist/<?php echo Auth::getID();?>">All Supplier</a></li>
+                <li><a href="#/addsupplier/<?php echo Auth::getID();?>">Add New Supplier</a></li>
               </ul>
             </li>
             <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i> <span>Order</span></a>  
@@ -108,8 +110,8 @@ if(!isset($_SESSION['login_mode'])){
             </li>
             <li class="menu-list"><a href="#"><i class="lnr lnr-indent-increase"></i> <span>Client</span></a>  
               <ul class="sub-menu-list">
-                <li><a href="#allclient/<?php echo $_SESSION['userData']['id'];?>/<?php echo $_SESSION['userData']['PKCompanyRefNo'];?>">All Client</a></li>
-                <li><a href="#addclient/<?php echo $_SESSION['userData']['id'];?>/<?php echo $_SESSION['userData']['PKCompanyRefNo'];?>">Add New Client</a></li>
+                <li><a href="#allclient/<?php echo $_SESSION['userData']['id'];?>/<?php echo Auth::getID();?>">All Client</a></li>
+                <li><a href="#addclient/<?php echo $_SESSION['userData']['id'];?>/<?php echo Auth::getID();?>">Add New Client</a></li>
 
               </ul>
             </li>
@@ -281,7 +283,7 @@ if(!isset($_SESSION['login_mode'])){
                   <div class="profile_img"> 
                     <span style="background:url(images/1.jpg) no-repeat center"> </span> 
                      <div class="user-name">
-                      <p><?php echo ucfirst($_SESSION['first_name']);?><span>Administrator</span></p>
+                      <p><?php echo Auth::getFirstName();?><span>Administrator</span></p>
                      </div>
                      <i class="lnr lnr-chevron-down"></i>
                      <i class="lnr lnr-chevron-up"></i>
@@ -324,20 +326,20 @@ if(!isset($_SESSION['login_mode'])){
   var ipaddress="<?php echo $_SERVER['REMOTE_ADDR'];?>";
 </script>   
 <script src="js/jquery.nicescroll.js"></script>
+<script src="js/angular/sweetalert.js"></script>
 <script src="js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/angular/angular.min.js"></script>
 <script src="js/angular/angular-route.min.js"></script>
-<script src="js/md5.js"></script>
 <script src="js/angular/prsapp.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(document).ready(function() {
     setTimeout(function(){
       $('#example').DataTable();
     },2000);
     
 } );
-</script>
+</script> -->
 </body>
 </html>

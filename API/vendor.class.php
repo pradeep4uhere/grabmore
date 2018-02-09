@@ -1,4 +1,4 @@
-<?php class userService{
+<?php class vendorService{
  
   //The MySQL DB class to use
   private $db = NULL;
@@ -76,11 +76,16 @@
   function adminLogin(){
     $res = array('status'=>'error','user'=>'');
     $postdata=$this->postFields;
-    $email_address=$postdata['email_address'];
+    $username=$postdata['username'];
     $password=md5($postdata['password']);
-    $details=$this->getUserDetails($email_address,$password);
-    $this->setSessionDetails($details[0]);
-    return $details;
+    $details=$this->getUserDetails($username,$password);
+    if(!empty($details)){
+    //$this->setSessionDetails($details[0]);
+      $res=array('status'=>'success','user'=>$details[0]);
+    }else{
+      $res=array('status'=>'error','user'=>"");  
+    }
+    return $res;
   }
 
   
@@ -92,10 +97,12 @@
   private function setSessionDetails($details){
     if(!empty($details)){
       $_SESSION['id']=$details['id'];
-      $_SESSION['email_address']=$details['email_address'];
+      $_SESSION['mobile']=$details['mobile'];
+      $_SESSION['email_address']=$details['companyEmailIds'];
       $_SESSION['first_name']=$details['fname'];
       $_SESSION['last_name']=$details['lname'];
-      $_SESSION['login_mode']='Admin';
+      $_SESSION['login_mode']='Vendor';
+      $_SESSION['userType']='1';
       $_SESSION['role_id']='1';
     }
   }
@@ -106,16 +113,106 @@
   -- getUserDetails  
   -- ------------------------------------------------
   */
-  function getUserDetails($email_address,$password){
+  public function getUserDetails($username,$password){
     $result=array();
     // $arrayVariable["column name"] = formatted SQL value
-    $values["email_address"] = MySQL::SQLValue($email_address);
-    $values["password"]  = MySQL::SQLValue($password);
-    $this->db->SelectRows(ADMIN, $values);
-    $array=$this->db->RecordsArray(MYSQLI_ASSOC);
+    if($this->isValidEmail($username)){
+      $values["companyEmailIds"] = MySQL::SQLValue($username);  
+    }else if($this->isValidMobile($username)){
+       $values["mobile"] = MySQL::SQLValue($username);   
+    }else{
+       $values["mobile"] = MySQL::SQLValue($username);   
+    }
+    $values["pasword"]  = MySQL::SQLValue($password);
+    try {
+        $this->db->SelectRows(VENDOR, $values);
+        //echo MySQL::BuildSQLSelect(VENDOR, $values);
+        $array=$this->db->RecordsArray(MYSQLI_ASSOC);
+    }catch(Exception $e) {
+        // If an error occurs, rollback and show the error
+        $array=$e->getMessage();
+    }
     return $array;
   } 
 
+
+
+  /*
+  -- -------------------------------------------------
+  -- Validate Mobile Number and Email address present?    
+  -- -------------------------------------------------
+  */
+  public function isPresentVendor($type,$value){
+    if($type=='mobile'){
+      $values["mobile"] = MySQL::SQLValue($value); 
+    }
+    if($type=='email'){
+      $values["companyEmailIds"] = MySQL::SQLValue($value); 
+    }
+    $this->db->SelectRows(VENDOR, $values);
+    if($this->db->RowCount()){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  
+
+
+  /*
+  -- ------------------------------------------------
+  -- Validate Mobile Number, Number should be 10 digit   
+  -- ------------------------------------------------
+  */
+  private function isValidMobile($mobile){
+    if($mobile!=''){
+      if (!preg_match('/^[0-9]{10}+$/', $mobile)) {
+         return false;
+      }else{
+        return true;
+      }
+    }
+
+  }
+
+
+
+
+  /*
+  -- ------------------------------------------------
+  -- Validate Email Address   
+  -- ------------------------------------------------
+  */
+  private function isValidEmail($email){
+    if($email!=''){
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+         return false;
+      }else{
+        return true;
+      }
+    }
+
+  }
+
+
+
+
+  /*
+  -- ------------------------------------------------
+  -- Validate Url Address   
+  -- ------------------------------------------------
+  */
+  private function isValidUrl($website){
+    if($website!=''){
+      if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+        return false;
+      }else{
+        return true;
+      }
+    }
+
+  }
 
 
 

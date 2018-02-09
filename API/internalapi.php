@@ -6,17 +6,18 @@
   -- ------------------------------------------------
   */
   require_once('user.class.php'); 
-
+  require_once('vendor.class.php'); 
+  $auth= new Auth();
+  
 
   require('validation_functions.php');
   $apiServiceObj= new apiService($db);
   $userServiceObj= new userService($db);
+  $vendorServiceObj= new vendorService($db);
   $data=file_get_contents("php://input");
   $action=trim($_REQUEST['action']);
 
   switch($action){
-
-
     case 'getchecksum':
         if(!empty($_POST)){
           $str=SALT.'|'.TOKEN;
@@ -410,6 +411,12 @@
         $postData=$data;
         if(!empty($postData)){
         $dataArr=json_decode($postData,true);
+
+        if(!isValidPostCheckSum($dataArr['data'])){
+          echo json_encode(array('status'=>'error','message'=>'Invalid Checksum.'));
+          exit;
+        }
+        
         //Validation for this Vendor
         if(isValidVendorProfileData($dataArr)){
           $companyData=(array)$dataArr['data']['user'];
@@ -492,8 +499,16 @@
         if(isValidVendorData($dataArr)){
           $companyData=(array)$dataArr['data']['user'];
             if(array_key_exists('PKCompanyRefNo', $companyData)){
-              $postFields['PKCompanyRefNo']=$companyData['PKCompanyRefNo'];
-              }
+                $postFields['PKCompanyRefNo']=$companyData['PKCompanyRefNo'];
+            }else{
+              if($vendorServiceObj->isPresentVendor('mobile',$companyData['mobile'])){
+                echo json_encode(array('status'=>'error','message'=>"mobile already registred."));
+                exit;
+              }if($vendorServiceObj->isPresentVendor('email',$companyData['emailaddress'])){
+                echo json_encode(array('status'=>'error','message'=>"Email address already registred."));
+                exit;
+              } 
+            }
             $postFields['fname']=$companyData['fname'];
             $postFields['lname']=$companyData['lname'];
             $postFields['companyName']=$companyData['compname'];
@@ -509,13 +524,13 @@
                 $postFields['pasword']=$companyData['password'];
             }
             $apiServiceObj->postFields=$postFields; 
+            //Check Is with Same Mobile or Email Alredy registred
             $res1=$apiServiceObj->saveCompanyData($apiServiceObj->postFields);
-                $res=json_encode(array('status'=>'success','user'=>json_decode($res1)));
-            echo $res;
-          }else{
-                  $res=array('message'=>'Parameter mising.','error'=>'error');
-            return $res;
-          }
+            echo json_encode(array('status'=>'success','user'=>json_decode($res1)));
+            }else{
+                $res=array('message'=>'Parameter mising.','error'=>'error');
+                echo json_encode($res);
+           }
       }
     break ;
 
@@ -589,14 +604,18 @@
 
     /******************Get Vendor Profile Details****************/
     case 'getvendorprofile': 
-          $id=trim($_REQUEST['id']);
-          if($id!=''){
-            $res1=$apiServiceObj->getVendorDetails($id);
-            $res=array('status'=>'success','data'=>$res1);
+          if(Auth::isLogin()){
+            $id=trim($_REQUEST['id']);
+            if($id!=''){
+              $res1=$apiServiceObj->getVendorDetails($id);
+              $res=array('status'=>'success','data'=>$res1);
+            }else{
+              $res=array('status'=>'failed','message'=>'invalid input.');
+            }
+            echo json_encode($res);exit;
           }else{
-            $res=array('status'=>'failed','message'=>'invalid input.');
+            echo json_encode(invalidLogin());exit;
           }
-          echo json_encode($res);exit;
     break ;
     /******************Get Vendor Profile Details****************/
 
@@ -607,8 +626,8 @@
        $postData=$data;
        if(!empty($postData)){
        $dataArr=json_decode($postData,true);
-       if(isset($dataArr['data']['user']['mobile'])){
-         if($dataArr['data']['user']['mobile']=='' && $dataArr['data']['user']['email_address']==''){
+       if(isset($dataArr['data']['user']['username'])){
+         if($dataArr['data']['user']['username']==''){
             $res=array('status'=>'failed','message'=>'Please enter mobile or email address.');
             echo json_encode($res); exit;
          }
@@ -617,17 +636,17 @@
          $res=array('status'=>'failed','message'=>'Please enter password.');
          echo json_encode($res); exit;
        }
-       if($dataArr['data']['user']['mobile']!='' || $dataArr['data']['user']['email_address']!=''){
-            $postFields['mobile']=$dataArr['data']['user']['mobile'];
-            $postFields['email_address']=$dataArr['data']['user']['email_address'];
+       if($dataArr['data']['user']['username']!=''){
+            $postFields['username']=$dataArr['data']['user']['username'];
             $postFields['password']=$dataArr['data']['user']['password'];
             $postFields['userType']=$dataArr['data']['user']['userType'];
-            $apiServiceObj->postFields=$postFields; 
-            $res=$apiServiceObj->vendorLogin();
-            //Set All the Session for website  
+            $vendorServiceObj->postFields=$postFields; 
+            $res=$vendorServiceObj->adminLogin();
             if($res['status']=='success'){
-              $_SESSION['userData']['userType']=1;
-              $_SESSION['userData']['user']=$res['user']['data'];
+              $sessionArr['Auth']['user']=$res['user'];
+              $sessionArr['Auth']['userType']=1;
+              $sessionArr['Auth']['login_mode']=1;
+              $auth->setAuthValues($sessionArr);
             }
             //$res=array('status'=>'failed','message'=>'Please enter mobile or email address.');
             echo json_encode($res); exit;

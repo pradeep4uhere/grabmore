@@ -249,9 +249,9 @@
               $status='failed';
               getErrorMessage($dataArr['data'],$status,$msg);
       }else if($dataArr['data']['user']['cpassword']!=$dataArr['data']['user']['password']){
-            $msg="You password did not matched.";
-            $status='failed';
-            getErrorMessage($dataArr['data'],$status,$msg);
+              $msg="You password did not matched.";
+              $status='failed';
+              getErrorMessage($dataArr['data'],$status,$msg);
       }else{
         return true;
       }
@@ -265,7 +265,7 @@
       if($data['from']=='mobile'){
         echo json_encode(array('status'=>$status,'message'=>$msg)); exit;
       }else{
-        return json_encode(array('status'=>$status,'message'=>$msg)); 
+        echo json_encode(array('status'=>$status,'message'=>$msg)); exit;
       }
     }
 
@@ -353,6 +353,49 @@
       return true;
     }
 
+  }
+
+
+
+
+
+
+  function isValidPostCheckSum($postData){
+    $requestData=$postData['user'];
+    $requestData['from']=$postData['from'];
+    $requestData['checksum']=$postData['checksum'];
+    $requestData['ipaddress']=$postData['ipaddress'];
+    if(CHECKSUM_VALIDATE){
+      if(is_array($requestData)){
+        $str=SALT.'|'.TOKEN;
+        foreach($requestData as $k=>$v){
+          if($k=='checksum' || $k=='PHPSESSID' || $k=='t' || $k=='action' || $k=='token'){ 
+            if($k=='checksum'){
+              $checksum=$v;
+            }
+          }else{
+            $str.='|'.$v;
+          }
+        }
+        if($checksum==md5($str)){
+          return true;
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
+    }else{
+      return true;
+    }
+
+  }
+
+
+
+
+  function invalidLogin(){
+    return array('status'=>'error','message'=>'Invalid Login User.');
   }
 
 

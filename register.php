@@ -12,6 +12,8 @@
 <!-- Graph CSS -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
+<!--Sweet Alert CSs-->
+<link href="css/sweetalert.css" rel="stylesheet"> 
 <!-- lined-icons -->
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
@@ -29,7 +31,10 @@
 <!-- Placed js at the end of the document so the pages load faster -->
 
 </head> 
-   
+<style type="text/css">
+   .sweet-alert h2{ font-size: 14px; }
+   .sweet-alert p{ font-size: 13px; }
+</style>  
  <body class="sign-in-up" ng-app="psrRegisterApp">
     <section>
       <div ng-view></div>
@@ -39,15 +44,18 @@
       </footer>
         <!--footer section end-->
   </section>
-  
+<script type="text/javascript">
+  var ipaddress="<?php echo $_SERVER['REMOTE_ADDR']?>";
+</script>  
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>
+<script src="js/angular/sweetalert.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/angular/angular.min.js"></script>
 <script src="js/angular/angular-route.min.js"></script>
-<script src="js/angular/angular-messages.js"></script>
+<!-- <script src="js/angular/angular-messages.js"></script>
 <script src="js/angular/angular-validation-match.js"></script>
-<script src="js/angular/psrregister.js"></script>
+ --><script src="js/angular/psrregister.js"></script>
 </body>
 </html>

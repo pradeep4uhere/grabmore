@@ -38,6 +38,10 @@ app.config(function($routeProvider) {
     controller  : 'VendorController'
   })
 
+  .when('/vendorprofile/:id', {
+    templateUrl : 'pages/vendor/vendorprofile.html',
+    controller  : 'VendorEditController'
+  })
   .when('/editvendor/:id', {
     templateUrl : 'pages/vendor/editvendor.html',
     controller  : 'VendorEditController'
@@ -170,8 +174,7 @@ app.controller('VendorEditController', function($scope,$http, $routeParams,DETAI
   $scope.vendors={};
   $scope.class='';
   $scope.message='';
-
-  $http.get(DETAILS_VENDOR_URL+'&id='+$scope.id)
+  $http.get(DETAILS_VENDOR_URL+'&id='+$scope.id+'&from=web')
   .then(function(response){
     //console.log(response.data.data);
     $scope.vendors = response.data.data; 
@@ -179,7 +182,7 @@ app.controller('VendorEditController', function($scope,$http, $routeParams,DETAI
   });
 
   $('#cnlBtn').click(function(){
-    window.location='index.php#/vendorlist';
+    window.location='profile.php';
   });
 
 
@@ -217,32 +220,63 @@ app.controller('VendorEditController', function($scope,$http, $routeParams,DETAI
                           "emailAddress":$scope.vendors.companyEmailIds,
                           "compIsActive":$scope.vendors.compIsActive
                         },
-                        "from": "mobile",
+                        "from": "web",
                         "checksum": "",
                         "ipaddress": ipaddress
                     };
       
 
-      var checksum=getCheckSum($scope.vendorData).done(function(res){
+      var checksumJson=getCheckSum($scope.vendorData).done(function(res){
+      	  if(res.status=='success'){
+      	  		$scope.vendorData.checksum=res.checksum;
+      	  }else{
+	      	  	$scope.vendorData.checksum='';
+      	  }	
+	      $http.post(UPDATE_VENDOR_PROFILE_URL,
+	      {
+	       data:$scope.vendorData
+	      })
+	      .success(function(data,status){
+	        if(data.status=='success'){
+	    	    $scope.type='success';
+	    	    $scope.title='Success !';
+		    }else{
+		    	$scope.type='error';
+		    	$scope.title='Error !';
+		    }
+		    $scope.text=data.message;
+	        $scope.messageAlert();
+	      })
+	      .error(function(data,status){
+	        $scope.class='danger';
+	        $scope.message='Profile is not updated Successfully';
+	    	$scope.type='error';
+	    	$scope.title='Error !';
+		    $scope.text=data.message;
+	        $scope.messageAlert();
+	      });
+   });   
 
-      });              
-      $http.post(UPDATE_VENDOR_PROFILE_URL,
-      {
-       data:$scope.vendorData
-      })
-      .success(function(data,status){
-      
-        $scope.class='success';
-        $scope.message='Profile is updated Successfully';
-      
-      })
-      .error(function(data,status){
-      
-        $scope.class='danger';
-        $scope.message='Profile is not updated Successfully';
-
-      });
   }
+
+  /***********Sweet Alert Mesage Goes Here********/
+  $scope.messageAlert = function(){
+    swal({
+            title: $scope.title,
+            text: $scope.text,
+            type: $scope.type,
+            showCancelButton: false,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Ok!",
+            closeOnConfirm: true
+          },
+          function(){
+            //swal("Ok!", "Your imaginary file has been deleted.", "success");
+          });
+  }
+  /***********Sweet Alert Mesage Goes Here********/
+
+
 
 });
 

@@ -1,4 +1,4 @@
-var app = angular.module('psrRegisterApp', ['ngRoute','ngMessages','validation.match'])
+var app = angular.module('psrRegisterApp', ['ngRoute'])
 .constant('USERREGISTERAPI','API/internalapi.php?action=addnewvendor&t='+ Math.random());
 
 app.config(function($routeProvider) {
@@ -14,6 +14,23 @@ app.config(function($routeProvider) {
 
 //Password Controller Start
 app.controller('RegisterController', function($scope,$http,USERREGISTERAPI) {
+
+  $scope.messageAlert = function(){
+    swal({
+            title: $scope.title,
+            text: $scope.text,
+            type: $scope.type,
+            showCancelButton: false,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Ok!",
+            closeOnConfirm: true
+          },
+          function(){
+            //swal("Ok!", "Your imaginary file has been deleted.", "success");
+          });
+  } 
+
+
   $scope.message = 'Hello from RegisterController';
   $scope.show=true;
   $scope.user={
@@ -41,8 +58,13 @@ app.controller('RegisterController', function($scope,$http,USERREGISTERAPI) {
 
   var saveUser = function(){
     var userType=$scope.user.userType;
+       console.log($scope.user);
+       $scope.title='Invalid Input !';
+       $scope.type='error';
        if($('#firstname').val()==''){
-          alert('Please enter first name');
+          $scope.text='Please enter First Name.';
+          $scope.messageAlert();
+          $('#firstname').focus();
           return false;
        }else{
           $scope.fname=$('#firstname').val();
@@ -50,78 +72,111 @@ app.controller('RegisterController', function($scope,$http,USERREGISTERAPI) {
 
 
        if($('#lastname').val()==''){
-          alert('Please enter last name');
+          $scope.text='Please enter last name.';
+          $scope.messageAlert();
           return false;
        }else{
         $scope.lname=$('#lastname').val();
        }
        if($('#compname').val()==''){
-          alert('Please enter company name');
+          $scope.text='Please enter company name.';
+          $scope.messageAlert();
           return false;
        }else{
         $scope.compname=$('#compname').val();
        }
 
        if($('#address').val()==''){
-          alert('Please enter address');
+          $scope.text='Please enter address.';
+          $scope.messageAlert();
           return false;
        }else{
         $scope.address=$('#address').val();
        }
 
 
+       if($('#locality').val()==''){
+          $scope.text='Please enter locality.';
+          $scope.messageAlert();
+          return false;
+       }else{
+        $scope.locality=$('#locality').val();
+       }
+
+
        if($('#Pincode').val()==''){
-          alert('Please enter Pincode');
+          $scope.text='Please enter pincode.';
+          $scope.messageAlert();
           return false;
        }else{
         $scope.Pincode=$('#Pincode').val();
        }
 
        if($('#phonenumber').val()==''){
-          alert('Please enter phonenumber');
+          $scope.text='Please enter mobile number.';
+          $scope.messageAlert();
           return false;
        }else{
         $scope.phonenumber=$('#phonenumber').val();
        }
 
        if($('#emailaddress').val()==''){
-          alert('Please enter email address');
+          $scope.text='Please enter email address.';
+          $scope.messageAlert();
           return false;
        }else{
         $scope.emailaddress=$('#emailaddress').val();
        }
 
 
+       if($('#password').val()==''){
+          $scope.text='Please enter password.';
+          $scope.messageAlert();
+          return false;
+       }else{
+        $scope.password=$('#password').val();
+       }
+
+
        if($('#confirmPassword').val()==''){
+          $scope.text='Please enter confirm password.';
+          $scope.messageAlert();
           alert('Please enter confirm password');
           return false;
        }else{
         $scope.confirmPassword=$('#confirmPassword').val();
        }
 
-
-
-       $scope.user={
-                fname:$scope.fname,
-                lname:$scope.lname,
-                compname:$scope.compname,
-                address:$scope.address,
-                pincode:$scope.Pincode,
-                emailaddress:$scope.emailaddress,
-                mobile_number:$scope.phonenumber,
-                password:$scope.confirmPassword
-              };
+     $scope.user={
+              "user":{  
+                       "fname":$scope.fname,
+                       "lname":$scope.lname,
+                       "compname":$scope.compname,
+                       "address":$scope.address,
+                       "locality":$scope.locality,
+                       "pincode":$scope.Pincode,
+                       "emailaddress":$scope.emailaddress,
+                       "mobile":$scope.phonenumber,
+                       "password":$scope.password,
+                       "cpassword":$scope.confirmPassword
+                    },
+                    "from":"web",
+                    "checksum":"",
+                    "ipaddress":ipaddress
+              }; 
        $http.post(USERREGISTERAPI,
        {
-         data: {user: $scope.user}
+         data:$scope.user
         
         })
         .success(function(data,status){
-          $scope.class='success';
-          $scope.message='User register successfully';
-          alert('User register successfully');
-          //window.location='login.php';
-        
+          $scope.title='Success !';
+          $scope.type='success';
+          $scope.text='Please wait redirect to login page.';
+          $scope.messageAlert();
+          setTimeout(function(){
+            window.location='login.php';
+          },2000);
         })
         .error(function(data,status){
          $scope.class='danger';
